@@ -1,13 +1,14 @@
 const urlController = require("../controllers/urlController");
 const express = require("express");
-const routes = express.Router();
+const router = express.Router();
 
-//post shorten the url
-routes.post("/shortenUrl", urlController.shortenUrl);
+// POST: Shorten the URL
+router.post("/shortenUrl", urlController.shortenUrl);
 
-// redirect to original url
-routes.get("/:shortCode", urlController.redirectUrl);
+// GET: Stats for a short URL - MUST come before the generic shortCode route
+router.get("/stats/:shortCode", urlController.getStats);
 
-// stats
-routes.get("/stats/:shortCode", urlController.getStats);
-module.exports = routes;
+// GET: Redirect to original URL - Now this won't catch /stats/xyz requests
+router.get("/:shortCode", urlController.redirectUrl);
+
+module.exports = router;

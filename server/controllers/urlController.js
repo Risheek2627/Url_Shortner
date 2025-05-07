@@ -47,7 +47,7 @@ const redirectUrl = async (req, res) => {
     // remove '::ffff:' prefix if present (common in IPv4-mapped IPv6)
     const normalizedIp = ip.includes("::ffff:") ? ip.split("::ffff:")[1] : ip;
     // Look up the location based on IP
-    const geo = geoip.lookup(normalizedIp);
+    const geo = geoip.lookup(normalizedIp) || {};
 
     const url = await Url.findOne({ shortCode });
 
@@ -67,9 +67,9 @@ const redirectUrl = async (req, res) => {
       "IP:",
       normalizedIp,
       "Country:",
-      geo?.country,
+      geo.country,
       "City:",
-      geo?.city
+      geo.city
     );
     await url.save();
 
