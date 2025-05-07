@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinkSnip | Shorten Your URLs</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-container">
+      <header>
+        <nav>
+          <div class="logo">
+            <i class="fas fa-link"></i>
+            <h1>LinkSnip</h1>
+          </div>
+          <div class="theme-toggle">
+            <button id="theme-toggle-btn">
+              <i class="fas fa-moon"></i>
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-content">
+            <h2>Transform Long URLs Into Short Links</h2>
+            <p>
+              Create short, memorable links that redirect to your long URLs —
+              perfect for sharing on social media, in messages, or wherever you
+              need concise links.
+            </p>
+          </div>
+          <div class="hero-image">
+            <img src="./short.svg" alt="URL shortening illustration" />
+          </div>
+        </section>
+
+        <section class="url-shortener">
+          <div class="form-container">
+            <form id="shorten-form">
+              <div class="input-group">
+                <input
+                  type="url"
+                  id="long-url"
+                  placeholder="Paste your long URL here..."
+                  required
+                />
+                <button type="submit" id="shorten-btn">Shorten</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="result-container" id="result-container">
+            <!-- Results will be added here dynamically -->
+          </div>
+        </section>
+
+        <section class="stats-container">
+          <h3>Want to check your link stats?</h3>
+          <div class="stats-form">
+            <div class="input-group">
+              <input
+                type="text"
+                id="stats-code"
+                placeholder="Enter short code (e.g., abc123)"
+              />
+              <button id="get-stats-btn">Get Stats</button>
+            </div>
+          </div>
+          <div class="stats-result" id="stats-result">
+            <!-- Stats results will be shown here -->
+          </div>
+        </section>
+
+        <section class="features">
+          <h3>Why Choose LinkSnip?</h3>
+          <div class="feature-cards">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <h4>Lightning Fast</h4>
+              <p>
+                Create shortened URLs in seconds and enjoy instant redirects.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h4>Track Performance</h4>
+              <p>
+                Monitor clicks and usage analytics for all your shortened links.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-qrcode"></i>
+              </div>
+              <h4>QR Code Generation</h4>
+              <p>
+                Get QR codes for your shortened links to use in print materials.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="footer-content">
+          <p>&copy; 2025 LinkSnip. All rights reserved.</p>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <div class="toast" id="toast">
+      <span id="toast-message"></span>
+      <button id="toast-close"><i class="fas fa-times"></i></button>
+    </div>
+
+    <script src="./js/main.js"></script>
+  </body>
+</html>
