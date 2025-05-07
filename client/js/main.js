@@ -138,142 +138,70 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Function to display URL shortening result
-  // function displayResult(data) {
-  //   resultContainer.style.display = "block";
-  //   resultContainer.innerHTML = `
-  //       <div class="result-card">
-  //         <div class="result-item">
-  //           <span class="result-label">Original URL:</span>
-  //           <div class="result-value">
-  //             <span>${truncateText(data.longUrl || "", 40)}</span>
-  //             <button class="copy-btn" data-clipboard="${
-  //               data.longUrl || ""
-  //             }" title="Copy original URL">
-  //               <i class="fas fa-copy"></i>
-  //             </button>
-  //           </div>
-  //         </div>
-  //         <div class="result-item">
-  //           <span class="result-label">Short URL:</span>
-  //           <div class="result-value">
-  //             <a href="${data.shortUrl || "#"}" target="_blank">${
-  //     data.shortUrl || "N/A"
-  //   }</a>
-  //             <button class="copy-btn" data-clipboard="${
-  //               data.shortUrl || ""
-  //             }" title="Copy short URL">
-  //               <i class="fas fa-copy"></i>
-  //             </button>
-  //           </div>
-  //         </div>
-  //         <div class="result-item">
-  //           <span class="result-label">Short Code:</span>
-  //           <div class="result-value">
-  //             <span>${data.shortCode || "N/A"}</span>
-  //             <button class="copy-btn" data-clipboard="${
-  //               data.shortCode || ""
-  //             }" title="Copy short code">
-  //               <i class="fas fa-copy"></i>
-  //             </button>
-  //      d     </div>
-  //         </div>
-  //         <div class="qr-code-container">
-  //           ${
-  //             data.qrCode
-  //               ? `<img src="${data.qrCode}" alt="QR Code for ${
-  //                   data.shortUrl || ""
-  //                 }">`
-  //               : "<p>QR code not available</p>"
-  //           }
-  //         </div>
-  //       </div>
-  //     `;
-
-  //   // Add event listeners to copy buttons
-  //   document.querySelectorAll(".copy-btn").forEach((btn) => {
-  //     btn.addEventListener("click", () => {
-  //       const textToCopy = btn.getAttribute("data-clipboard");
-  //       navigator.clipboard
-  //         .writeText(textToCopy)
-  //         .then(() => {
-  //           showToast("Copied to clipboard!", "success");
-  //         })
-  //         .catch((err) => {
-  //           console.error("Could not copy text: ", err);
-  //           showToast("Failed to copy text", "error");
-  //         });
-  //     });
-  //   });
-  // }
-  // Function to display URL shortening result
   function displayResult(data) {
     resultContainer.style.display = "block";
     resultContainer.innerHTML = `
-    <div class="result-card">
-      <div class="result-item">
-        <span class="result-label">Original URL:</span>
-        <div class="result-value">
-          <span>${truncateText(data.longUrl || "", 40)}</span>
-          <button class="copy-btn" data-clipboard-text="${
-            data.longUrl || ""
-          }" title="Copy original URL">
-            <i class="fas fa-copy"></i>
-          </button>
-        </div>
-      </div>
-      <div class="result-item">
-        <span class="result-label">Short URL:</span>
-        <div class="result-value">
-          <a href="${data.shortUrl || "#"}" target="_blank">${
+        <div class="result-card">
+          <div class="result-item">
+            <span class="result-label">Original URL:</span>
+            <div class="result-value">
+              <span>${truncateText(data.longUrl || "", 40)}</span>
+              <button class="copy-btn" data-clipboard="${
+                data.longUrl || ""
+              }" title="Copy original URL">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Short URL:</span>
+            <div class="result-value">
+              <a href="${data.shortUrl || "#"}" target="_blank">${
       data.shortUrl || "N/A"
     }</a>
-          <button class="copy-btn" data-clipboard-text="${
-            data.shortUrl || ""
-          }" title="Copy short URL">
-            <i class="fas fa-copy"></i>
-          </button>
-        </div>
-      </div>
-      <div class="result-item">
-        <span class="result-label">Short Code:</span>
-        <div class="result-value">
-          <span>${data.shortCode || "N/A"}</span>
-          <button class="copy-btn" data-clipboard-text="${
-            data.shortCode || ""
-          }" title="Copy short code">
-            <i class="fas fa-copy"></i>
-          </button>
-        </div>
-      </div>
-      <div class="qr-code-container">
-        ${
-          data.qrCode
-            ? `<img src="${data.qrCode}" alt="QR Code for ${
+              <button class="copy-btn" data-clipboard="${
                 data.shortUrl || ""
-              }">`
-            : "<p>QR code not available</p>"
-        }
-      </div>
-    </div>
-  `;
+              }" title="Copy short URL">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Short Code:</span>
+            <div class="result-value">
+              <span>${data.shortCode || "N/A"}</span>
+              <button class="copy-btn" data-clipboard="${
+                data.shortCode || ""
+              }" title="Copy short code">
+                <i class="fas fa-copy"></i>
+              </button>
+       d     </div>
+          </div>
+          <div class="qr-code-container">
+            ${
+              data.qrCode
+                ? `<img src="${data.qrCode}" alt="QR Code for ${
+                    data.shortUrl || ""
+                  }">`
+                : "<p>QR code not available</p>"
+            }
+          </div>
+        </div>
+      `;
 
     // Add event listeners to copy buttons
     document.querySelectorAll(".copy-btn").forEach((btn) => {
-      btn.addEventListener("click", async () => {
-        const textToCopy = btn.getAttribute("data-clipboard-text");
-        try {
-          await navigator.clipboard.writeText(textToCopy);
-          showToast("Copied to clipboard!", "success");
-
-          // Visual feedback
-          btn.innerHTML = '<i class="fas fa-check"></i>';
-          setTimeout(() => {
-            btn.innerHTML = '<i class="fas fa-copy"></i>';
-          }, 2000);
-        } catch (err) {
-          console.error("Could not copy text: ", err);
-          showToast("Failed to copy text", "error");
-        }
+      btn.addEventListener("click", () => {
+        const textToCopy = btn.getAttribute("data-clipboard");
+        navigator.clipboard
+          .writeText(textToCopy)
+          .then(() => {
+            showToast("Copied to clipboard!", "success");
+          })
+          .catch((err) => {
+            console.error("Could not copy text: ", err);
+            showToast("Failed to copy text", "error");
+          });
       });
     });
   }
