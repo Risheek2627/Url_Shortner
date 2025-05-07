@@ -5,6 +5,7 @@ const Url = require("../models/Url");
 const dotenv = require("dotenv");
 const geoip = require("geoip-lite"); // Import geoip-lite
 dotenv.config();
+const BASE_URL = process.env.BASE_URL || "http://localhost:5000";
 
 const shortenUrl = async (req, res) => {
   const { longUrl } = req.body;
@@ -20,7 +21,7 @@ const shortenUrl = async (req, res) => {
     }
 
     const shortCode = shortid.generate();
-    const shortUrl = `${process.env.BASE_URL}/api/${shortCode}`;
+    const shortUrl = `${BASE_URL}/api/${shortCode}`;
     const qrCode = await QRCode.toDataURL(shortUrl);
     console.log("Base url : ", process.env.BASE_URL);
     //save to db;
