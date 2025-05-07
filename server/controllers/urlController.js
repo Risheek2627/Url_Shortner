@@ -20,7 +20,7 @@ const shortenUrl = async (req, res) => {
     }
 
     const shortCode = shortid.generate();
-    const shortUrl = `${process.env.BASE_URL}/${shortCode}`;
+    const shortUrl = `${process.env.BASE_URL}/api/${shortCode}`;
     const qrCode = await QRCode.toDataURL(shortUrl);
     console.log("Base url : ", process.env.BASE_URL);
     //save to db;
@@ -83,6 +83,7 @@ const redirectUrl = async (req, res) => {
 const getStats = async (req, res) => {
   try {
     const shortCode = req.params.shortCode;
+    console.log("Received shortCode:", req.params.shortCode);
     console.log("Received shortCode:", shortCode);
     const url = await Url.findOne({ shortCode });
 

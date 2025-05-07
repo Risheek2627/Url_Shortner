@@ -9,14 +9,14 @@ const urlSchema = new mongoose.Schema({
   longUrl: {
     type: String,
     required: true,
-    validate: {
-      validator: function (v) {
-        return /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(
-          v
-        );
-      },
-      message: (props) => `${props.value} is not a valid URL!`,
-    },
+    // validate: {
+    //   validator: function (v) {
+    //     return /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(
+    //       v
+    //     );
+    //   },
+    //   message: (props) => `${props.value} is not a valid URL!`,
+    // },
   },
   shortUrl: {
     type: String,
