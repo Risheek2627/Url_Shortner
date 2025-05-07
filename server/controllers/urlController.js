@@ -5,7 +5,7 @@ const Url = require("../models/Url");
 const dotenv = require("dotenv");
 const geoip = require("geoip-lite"); // Import geoip-lite
 dotenv.config();
-const BASE_URL = process.env.BASE_URL || "http://localhost:5000";
+const BASE_URL = process.env.BASE_URL;
 
 const shortenUrl = async (req, res) => {
   const { longUrl } = req.body;
