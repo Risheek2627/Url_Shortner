@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Backend API URL - replace with your actual backend URL
-  const API_URL = "http://localhost:5000";
-  // const API_URL = "https://url-shortner-n3h5.onrender.com";
+  // const API_URL = "http://localhost:5000";
+  const API_URL = "https://url-shortner-n3h5.onrender.com";
 
   // DOM Elements
   const shortenForm = document.getElementById("shorten-form");
