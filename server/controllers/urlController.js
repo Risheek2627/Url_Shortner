@@ -1,4 +1,4 @@
-const shortid = require("nanoid");
+const { nanoid } = require("nanoid");
 const express = require("express");
 const QRCode = require("qrcode");
 const Url = require("../models/Url");
@@ -20,7 +20,7 @@ const shortenUrl = async (req, res) => {
       return res.json({ shortUrl: existing.shortUrl });
     }
 
-    const shortCode = shortid.generate();
+    const shortCode = nanoid();
     const shortUrl = `${BASE_URL}/api/${shortCode}`;
     const qrCode = await QRCode.toDataURL(shortUrl);
     console.log("Base url : ", process.env.BASE_URL);
