@@ -1,4 +1,4 @@
-const shortid = require("shortid");
+const shortid = require("nanoid");
 const express = require("express");
 const QRCode = require("qrcode");
 const Url = require("../models/Url");
